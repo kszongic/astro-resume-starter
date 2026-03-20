@@ -1,0 +1,16 @@
+{
+  "name": "astro-resume-starter",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "A clean, modern resume/CV website built with Astro. Dark mode, PDF export, SEO-optimized, and fully customizable.",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^4.16.0"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,248 @@
+---
+import Layout from '../layouts/Layout.astro';
+import resume from '../data/resume.json';
+---
+
+<Layout title={`${resume.name} — ${resume.title}`} description={resume.summary}>
+  <div class="container">
+    <header class="header">
+      <div class="header-content">
+        <h1>{resume.name}</h1>
+        <p class="title">{resume.title}</p>
+        <div class="contact">
+          <span>{resume.location}</span>
+          <span>·</span>
+          <a href={`mailto:${resume.email}`}>{resume.email}</a>
+          <span>·</span>
+          <a href={resume.github} target="_blank">GitHub</a>
+          <span>·</span>
+          <a href={resume.linkedin} target="_blank">LinkedIn</a>
+        </div>
+      </div>
+      <div class="actions no-print">
+        <button id="theme-toggle" class="btn" title="Toggle dark mode">🌓</button>
+        <button onclick="window.print()" class="btn">📄 PDF</button>
+      </div>
+    </header>
+
+    <section class="section">
+      <h2>Summary</h2>
+      <p class="summary">{resume.summary}</p>
+    </section>
+
+    <section class="section">
+      <h2>Experience</h2>
+      {resume.experience.map((job) => (
+        <div class="entry">
+          <div class="entry-header">
+            <div>
+              <strong>{job.role}</strong>
+              <span class="at"> at {job.company}</span>
+            </div>
+            <span class="period">{job.period}</span>
+          </div>
+          <ul>
+            {job.highlights.map((h) => (
+              <li>{h}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </section>
+
+    <section class="section">
+      <h2>Education</h2>
+      {resume.education.map((edu) => (
+        <div class="entry">
+          <div class="entry-header">
+            <div>
+              <strong>{edu.degree}</strong>
+              <span class="at"> — {edu.school}</span>
+            </div>
+            <span class="period">{edu.period}</span>
+          </div>
+        </div>
+      ))}
+    </section>
+
+    <section class="section">
+      <h2>Skills</h2>
+      <div class="skills-grid">
+        {Object.entries(resume.skills).map(([category, items]) => (
+          <div class="skill-group">
+            <strong>{category}</strong>
+            <div class="skill-tags">
+              {(items as string[]).map((s) => (
+                <span class="tag">{s}</span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Projects</h2>
+      {resume.projects.map((p) => (
+        <div class="entry">
+          <div class="entry-header">
+            <strong><a href={p.url} target="_blank">{p.name}</a></strong>
+          </div>
+          <p>{p.description}</p>
+        </div>
+      ))}
+    </section>
+
+    <footer class="footer no-print">
+      <p>Built with <a href="https://astro.build" target="_blank">Astro</a> · <a href="https://github.com/kszongic/astro-resume-starter" target="_blank">Source</a></p>
+    </footer>
+  </div>
+</Layout>
+
+<style>
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid var(--border);
+  }
+
+  h1 {
+    font-size: 2rem;
+    letter-spacing: -0.02em;
+  }
+
+  .title {
+    color: var(--accent);
+    font-size: 1.15rem;
+    margin-top: 0.25rem;
+  }
+
+  .contact {
+    margin-top: 0.5rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .actions {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .btn {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 0.4rem 0.75rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: background 0.2s;
+  }
+
+  .btn:hover {
+    background: var(--border);
+  }
+
+  .section {
+    margin-bottom: 1.75rem;
+  }
+
+  h2 {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.35rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .summary {
+    color: var(--text-secondary);
+  }
+
+  .entry {
+    margin-bottom: 1rem;
+  }
+
+  .entry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+  }
+
+  .at {
+    color: var(--text-secondary);
+  }
+
+  .period {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+  }
+
+  ul {
+    margin-top: 0.35rem;
+    padding-left: 1.25rem;
+    color: var(--text-secondary);
+  }
+
+  li {
+    margin-bottom: 0.2rem;
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-top: 0.35rem;
+  }
+
+  .tag {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    padding: 0.15rem 0.55rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+  }
+
+  .footer {
+    margin-top: 3rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 600px) {
+    .header {
+      flex-direction: column;
+    }
+    .actions {
+      margin-top: 1rem;
+    }
+    .entry-header {
+      flex-direction: column;
+    }
+  }
+</style>

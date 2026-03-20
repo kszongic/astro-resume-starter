@@ -1,0 +1,57 @@
+{
+  "name": "Jane Developer",
+  "title": "Full-Stack Engineer",
+  "email": "jane@example.com",
+  "website": "https://janedev.com",
+  "github": "https://github.com/janedev",
+  "linkedin": "https://linkedin.com/in/janedev",
+  "location": "San Francisco, CA",
+  "summary": "Full-stack engineer with 5+ years of experience building scalable web applications. Passionate about clean code, developer experience, and open source.",
+  "experience": [
+    {
+      "company": "TechCorp",
+      "role": "Senior Full-Stack Engineer",
+      "period": "2022 – Present",
+      "highlights": [
+        "Led migration from monolith to microservices, reducing deploy time by 80%",
+        "Built real-time analytics dashboard serving 50K+ daily users",
+        "Mentored 4 junior engineers through structured onboarding program"
+      ]
+    },
+    {
+      "company": "StartupXYZ",
+      "role": "Software Engineer",
+      "period": "2019 – 2022",
+      "highlights": [
+        "Designed and implemented REST API handling 10M+ requests/day",
+        "Reduced page load time by 60% through performance optimization",
+        "Introduced CI/CD pipeline cutting release cycle from weeks to hours"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "school": "University of Technology",
+      "degree": "B.S. Computer Science",
+      "period": "2015 – 2019"
+    }
+  ],
+  "skills": {
+    "Languages": ["TypeScript", "Python", "Go", "Rust"],
+    "Frontend": ["React", "Next.js", "Astro", "Tailwind CSS"],
+    "Backend": ["Node.js", "FastAPI", "PostgreSQL", "Redis"],
+    "DevOps": ["Docker", "Kubernetes", "AWS", "GitHub Actions"]
+  },
+  "projects": [
+    {
+      "name": "OpenWidget",
+      "description": "Open-source embeddable widget framework with 2K+ GitHub stars",
+      "url": "https://github.com/janedev/openwidget"
+    },
+    {
+      "name": "DevMetrics",
+      "description": "Developer productivity analytics tool used by 500+ teams",
+      "url": "https://devmetrics.io"
+    }
+  ]
+}
